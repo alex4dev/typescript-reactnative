@@ -1,8 +1,9 @@
 import Config from 'config/DebugConfig';
 import Reactotron from 'reactotron-react-native';
+import reactotronconfig from 'config/ReactotronConfig';
 import {applyMiddleware, compose, createStore, Reducer, StoreCreator} from 'redux';
 // import {createLogger} from 'redux-logger';
-import sagaMiddlewareFactory, {SagaIterator, Task} from 'redux-saga';
+import sagaMiddlewareFactory, {SagaIterator, Task, SagaMonitor} from 'redux-saga';
 import {Store} from 'react-redux';
 import DebugConfig from 'config/DebugConfig';
 import {RootState} from 'states';
@@ -18,10 +19,10 @@ export default (rootReducer: Reducer<RootState>, rootSaga: () => SagaIterator): 
 
     let opts = {};
     if (Config.useReactotron) {
-        /*        const sagaMonitor: Monitor = Reactotron.createSagaMonitor();
+        const sagaMonitor: SagaMonitor = Reactotron.createSagaMonitor();
         opts = {
             sagaMonitor
-        }; */
+        };
     }
     const sagaMiddleware = sagaMiddlewareFactory(opts);
     middleware.push(sagaMiddleware);
@@ -46,22 +47,12 @@ export default (rootReducer: Reducer<RootState>, rootSaga: () => SagaIterator): 
     /* ------------- Assemble Middleware ------------- */
 
     enhancers.push(applyMiddleware(...middleware));
+    if (Config.useReactotron) {
+        enhancers.push(Reactotron.createEnhancer());
+    }
 
-    // if Reactotron is enabled (default for __DEV__), we'll create the store through Reactotron
-    /*     const createAppropriateStore: StoreCreator = Config.useReactotron
-        ? Reactotron.createStore
-        : createStore; */
-
-    const createAppropriateStore: StoreCreator = createStore;
-
-    // eslint-disable-next-line no-underscore-dangle
-    const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
-    // create store
-    const store: Store<RootState> = createAppropriateStore(
-        rootReducer,
-        composeEnhancers(...enhancers)
-    );
+    // create createStore
+    const store: Store<RootState> = createStore(rootReducer, compose(...enhancers)); // const store = createStore(rootReducer, Reactotron.createEnhancer())
 
     // kick off root saga
     const sagasManager: Task = sagaMiddleware.run(rootSaga);

@@ -20,13 +20,10 @@ type Props = DispatchFromProps;
 
 const Stack = createStackNavigator();
 
-React.useEffect(() => {
-    return () => (isReadyRef.current = false);
-}, []);
-
 class RootContainer extends React.Component<Props> {
     public constructor(props) {
         super(props);
+        isReadyRef.current = false;
         Dbg.setLevel(Config.dbgLevel);
         if (Config.useReactotron) {
             Dbg.connectConsoleToReactotron();
@@ -44,7 +41,7 @@ class RootContainer extends React.Component<Props> {
                 onReady={() => {
                     isReadyRef.current = true;
                 }}>
-                <Stack.Navigator>
+                <Stack.Navigator initialRouteName={RouteNames.login}>
                     <Stack.Screen
                         name={RouteNames.login}
                         component={LoginContainer}

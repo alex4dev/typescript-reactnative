@@ -3,6 +3,7 @@ import {getType} from 'typesafe-actions';
 import {fetchActivityAction, fetchSearchAction} from 'actions/Home/HomeActions';
 import {ContentState, PicsumDetails} from 'states';
 import {FetchPicsumAction, fetchPicsumAction} from 'actions';
+import Dbg from 'utils/dbgUtils';
 
 /* ------------- Action Type ------------- */
 
@@ -29,8 +30,8 @@ const reducer: Reducer<ContentState, ContentAction> = (
                 string,
                 PicsumDetails
             >;
-            if (action.payload[0] && !items.has(action.payload[0].id)) {
-                items.set(action.payload[0].id, action.payload[0]);
+            if (action.payload && !items.has(action.payload.id)) {
+                items.set(action.payload.id, action.payload);
             }
             return {
                 ...state,

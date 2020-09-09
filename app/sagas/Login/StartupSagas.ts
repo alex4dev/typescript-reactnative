@@ -6,7 +6,7 @@ import {takeLatest, call, delay, put} from 'redux-saga/effects';
 
 function* handleStartup(action: StartupAction): SagaIterator {
     Dbg.info(handleStartup.name, 'start check version');
-    yield call(delay, 1000);
+    yield delay(1000);
     yield put(startupAction.success());
 }
 

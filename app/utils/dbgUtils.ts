@@ -26,7 +26,8 @@ export default abstract class Dbg {
                     preview: (source && source.length > 0 ? source + ' - ' : '') + message,
                     value: optionalParams
                 });
-            } else if (Config.useConsole) {
+            }
+            if (Config.useConsole) {
                 // eslint-disable-next-line no-console
                 console.log(
                     (source ? source + ' - ' : '') + message,
@@ -43,7 +44,8 @@ export default abstract class Dbg {
                     preview: (source && source.length > 0 ? source + ' - ' : '') + message,
                     value: optionalParams
                 });
-            } else if (Config.useConsole) {
+            }
+            if (Config.useConsole) {
                 // eslint-disable-next-line no-console
                 console.debug(
                     (source ? source + ' - ' : '') + message,
@@ -62,7 +64,8 @@ export default abstract class Dbg {
                     important: true,
                     image: 'https://placebear.com/400/400'
                 });
-            } else if (Config.useConsole) {
+            }
+            if (Config.useConsole) {
                 // eslint-disable-next-line no-console
                 console.info(
                     (source ? source + ' - ' : '') + message,
@@ -80,7 +83,8 @@ export default abstract class Dbg {
                     value: optionalParams,
                     important: true
                 });
-            } else if (Config.useConsole) {
+            }
+            if (Config.useConsole) {
                 // eslint-disable-next-line no-console
                 console.warn(
                     (source ? source + ' - ' : '') + message,
@@ -98,7 +102,8 @@ export default abstract class Dbg {
                     value: optionalParams,
                     important: true
                 });
-            } else if (Config.useConsole) {
+            }
+            if (Config.useConsole) {
                 // eslint-disable-next-line no-console
                 console.error(
                     (source ? source + ' - ' : '') + message,

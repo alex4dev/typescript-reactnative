@@ -11,6 +11,7 @@ import {FlatList} from 'react-native-gesture-handler';
 import {getHomeLoading, getActivityDetails} from 'selectors/Home/HomeSelectors';
 import {AnyAction} from 'redux';
 import {fetchActivityAction} from 'actions';
+import Dbg from 'utils/dbgUtils';
 
 interface StateToProps {
     isLoading: boolean;
@@ -23,6 +24,7 @@ interface DispatchToProps {
 
 type Props = StateToProps & DispatchToProps;
 
+const TAG: string = 'HomeContainer';
 class HomeContainer extends React.Component<Props> {
     public componentDidMount(): void {
         this.props.requestData();
@@ -50,7 +52,7 @@ class HomeContainer extends React.Component<Props> {
         index: number;
         // tslint:disable-next-line:ter-indent
     }): JSX.Element => {
-        const name: string = item.id;
+        const name: string = item.details ? item.details.author : '';
         const artwork =
             item.details && item.details.download_url
                 ? item.details.download_url

@@ -1,4 +1,4 @@
-// import {DbgLevel} from 'utils/dbgUtils';
+import {DbgLevel} from 'utils/dbgUtils';
 
 /**
  * This is a .js file
@@ -11,6 +11,6 @@ export default {
     reduxLogging: false,
     useReactotron: __DEV__,
     useConsole: false && __DEV__,
-    dbgLevel: 0, //DbgLevel.ALL,
-    reactotronHost: '192.168.1.87'
+    dbgLevel: DbgLevel.ALL,
+    reactotronHost: 'localhost'
 };

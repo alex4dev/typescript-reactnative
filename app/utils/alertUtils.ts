@@ -1,4 +1,3 @@
-import {invokeStoreApp} from 'utils/LinkingUtils';
 import Dbg from 'utils/dbgUtils';
 import {AlertNames} from 'constants/alertConstants';
 import {AlertStatic, AlertButton} from 'react-native';
@@ -6,6 +5,7 @@ import {RouteNames} from 'constants/navigationConstants';
 import {AlertModel} from 'actions/Base/AlertActions';
 import {startupAction} from 'actions';
 import {navigateAction} from 'actions/Base/NavigationActions';
+import {invokeStoreApp} from './linkingUtils';
 
 export function getAlertDataByName(name: AlertNames): AlertModel {
     let data: AlertModel;

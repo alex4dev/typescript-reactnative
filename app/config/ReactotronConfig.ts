@@ -1,14 +1,17 @@
 import Config from 'config/DebugConfig';
-import Reactotron from 'reactotron-react-native';
-// import {reactotronRedux as reduxPlugin} from 'reactotron-redux';
-// import sagaPlugin from 'reactotron-redux-saga';
+import Reactotron, {ReactotronReactNative} from 'reactotron-react-native';
+import {reactotronRedux as reduxPlugin} from 'reactotron-redux';
+import sagaPlugin from 'reactotron-redux-saga';
+import DebugConfig from 'config/DebugConfig';
 
+let reactotronconfig;
 if (Config.useReactotron) {
     // https://github.com/infinitered/reactotron for more options!
-    Reactotron.configure({name: 'Glowbl App', host: Config.reactotronHost})
+    reactotronconfig = Reactotron
+        //.configure({name: 'Boilerplate App', host: DebugConfig.reactotronHost}) // to run Reactotron with a real device, uncomment this line and add your ip adress from ifconfig
         .useReactNative()
-        // .use(reduxPlugin())
-        // .use(sagaPlugin())
+        .use(reduxPlugin())
+        .use(sagaPlugin({}))
         .connect();
 
     // Let's clear Reactotron on every time we load the app
@@ -18,3 +21,4 @@ if (Config.useReactotron) {
     // on every file.  This is just DEV mode, so no big deal.
     // console.tron = Reactotron; // tslint:disable-line
 }
+export default reactotronconfig;

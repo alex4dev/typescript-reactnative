@@ -3,13 +3,14 @@ import {all, fork, spawn} from 'redux-saga/effects';
 /* ------------- Sagas ------------- */
 import startupRootSaga from './Login/StartupSagas';
 import loginRootSaga from './Login/LoginSagas';
+import contentRootSaga from './Content/ContentSagas';
 import homeRootSaga from './Home/HomeSagas';
 import navigationRootSaga from './Base/NavigationSagas';
 import alertRootSaga from './Base/AlertSagas';
 
 /* ------------- Connect Types To Sagas ------------- */
 
-const sagas = [startupRootSaga, loginRootSaga, homeRootSaga];
+const sagas = [startupRootSaga, loginRootSaga, homeRootSaga, contentRootSaga];
 
 const sagasBase = [navigationRootSaga, alertRootSaga];
 

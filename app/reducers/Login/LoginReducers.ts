@@ -4,6 +4,7 @@ import {LoginAction, LoginInfoUpdateAction, StartupAction} from 'actions';
 import {LoginState} from 'states';
 import {getType} from 'typesafe-actions';
 import {Reducer} from 'redux';
+import Dbg from 'utils/dbgUtils';
 
 /* ------------- Types and Action Creators ------------- */
 
@@ -37,6 +38,7 @@ function startupReducer(state: LoginState, action: StartupAction): LoginState {
 }
 
 function doLoginReducer(state: LoginState, action: LoginAction): LoginState {
+    Dbg.info(doLoginReducer.name, 'action receiveid ' + action.type);
     switch (action.type) {
         case getType(loginAction.request): {
             return {...state, loading: true};
