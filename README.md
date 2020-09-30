@@ -12,7 +12,7 @@
   </a>
 </p>
 
-> A simple typescript boilerplate project with all dependencies uptodate 
+> This project is inspired from ignite typescript boilerplate, and has been improved with typescript best practices
 
 ## :star: Features
 
