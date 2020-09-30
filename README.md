@@ -1,4 +1,4 @@
-# :space_invader: React Native Template TypeScript
+# :space_invader: React Native Boilerplate TypeScript
 
 <p>
   <a href="https://travis-ci.org/alex4dev/typescript-reactnative">
