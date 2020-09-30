@@ -10,9 +10,6 @@
   <a href="https://github.com/alex4dev/typescript-reactnative/graphs/commit-activity">
     <img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" target="_blank" />
   </a>
-  <a href="https://github.com/alex4dev/typescript-reactnative/blob/master/LICENSE">
-    <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" target="_blank" />
-  </a>
 </p>
 
 > A simple typescript boilerplate project with all dependencies uptodate 
@@ -29,5 +26,11 @@
 - redux
 - redux-saga
 - reselect
+
+## :arrow_forward: Installation
+
+```sh
+npm install
+```
 
 
